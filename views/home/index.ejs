@@ -1,0 +1,81 @@
+<div class="container" ng-app="home" ng-controller="HomeCtrl">
+	<div class="col-md-12">
+		<table class="table table-striped nowrap">
+			<thead>
+				<tr>
+					<th width="1">#</th>
+					<th>Domena</th>
+					<th>IP</th>
+					<th>MX</th>
+					<th>NS</th>
+					<th>TXT</th>
+					<th width="1">ID</th>
+					<th width="1"><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#newDomainModal"><i class="glyphicon glyphicon-plus"></i> dodaj</button></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="domain in domains">
+					<td>{{$index + 1}}</td>
+					<td>{{domain.addr}}</td>
+					<td>
+						<ul class="list-unstyled">
+							<li ng-repeat="ip in domain.ip">{{ip}}</li>
+						</ul>
+					</td>
+					<td>
+						<ul class="list-unstyled">
+							<li ng-repeat="mx in domain.mx">{{mx}}</li>
+						</ul>
+					</td>
+					<td>
+						<ul class="list-unstyled">
+							<li ng-repeat="ns in domain.ns">{{ns}}</li>
+						</ul>
+					</td>
+					<td>
+						<ul class="list-unstyled">
+							<li ng-repeat="txt in domain.txt">{{txt}}</li>
+						</ul>
+					</td>
+					<td>{{domain.id}}</td>
+					<td>
+						<div class="btn-group">
+						  <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+							Opcje <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu pull-right" role="menu">
+							<li><a href="#" ng-click="removeDomain(domain)"><i class="glyphicon glyphicon-trash"></i> Usuń</a></li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="modal fade" id="newDomainModal" tabindex="-1" role="dialog" aria-labelledby="newDomainModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<form role="form" name="newDomainForm" ng-submit="addDomain(newDomainForm)">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Dodaj domenę</h4>
+			  </div>
+			  <div class="modal-body">
+				  <div class="form-group">
+					<label for="addr">Adres</label>
+					<input type="text" class="form-control" id="addr" placeholder="Adres domeny" ng-model="newDomain.addr">
+				  </div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+				<button type="submit" class="btn btn-primary">Zapisz</button>
+			  </div>
+			</div>
+		</form>
+	  </div>
+	</div>
+	
+</div>
+
+<script type="text/javascript" src="/js/HomeCtrl.js"></script>

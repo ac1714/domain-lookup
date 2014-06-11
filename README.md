@@ -1,0 +1,2 @@
+# domains
+### a Sails application
