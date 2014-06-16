@@ -31,5 +31,5 @@ Home.controller('HomeCtrl', function($scope, $http) {
 		});
 	};
 	
-	setTimeout($scope.getDomains, 1);
+	setTimeout($scope.getDomains, 100);
 });
